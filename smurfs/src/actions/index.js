@@ -16,7 +16,7 @@ export const getSmurfs = () => dispatch => {
     .then(res => {
       dispatch({
         type: SMURF_SUCCESS,
-        payload: res.data.smurfs
+        payload: res.data
       })
     })
     .catch(err => {
@@ -36,7 +36,7 @@ export const addSmurf = newSmurf => dispatch => {
     .then(res => {
       dispatch({
         type: ADD_SMURF_SUCCESS,
-        payload: res.data.smurfs
+        payload: res.data
       })
     })
     .catch(err => {
