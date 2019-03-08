@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import { addSmurf } from '../actions';
 
+import Loader from 'react-loader-spinner';
+
 import { connect } from 'react-redux';
 
 class SmurfForm extends Component {
@@ -35,6 +37,13 @@ class SmurfForm extends Component {
     }
 
     render() {
+
+        if (this.props.addingSmurf) {
+            return (
+                <Loader type="Ball-Triangle" color="#00BFFF" height="90" width="60" />
+            )
+        }
+
         return (
             <div className='smurf-form'>
             <h2>Add to Village</h2>
@@ -70,4 +79,8 @@ class SmurfForm extends Component {
     }
 }
 
-export default connect(null, { addSmurf })(SmurfForm);
+const mapStateToProps = state => ({
+    addingSmurf: state.addingSmurf
+});
+
+export default connect(mapStateToProps, { addSmurf })(SmurfForm);
